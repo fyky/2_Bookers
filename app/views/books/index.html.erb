@@ -1,14 +1,14 @@
-
-
+<header>
 <% if @book.errors.any? %>
   <%= @book.errors.count %>件のエラーが発生しました
   <% @book.errors.full_messages.each do |message| %>
     <%= message %>
   <% end %>
 <% end %>
-
-
 <h1>Books</h1>
+</header>
+
+<main>
 <table>
   <tr>
     <th>Title</th>
@@ -31,20 +31,19 @@
     <td><%= link_to"Destroy",book_path(book.id),method: :delete, data: { confirm: 'Are you sure?' }  %></td>
   </tr>
   <% end %>
-
-
-
-
 </table>
+
 <h2>New book</h2>
 <%= form_with model:@book, local:true do |f| %>
 
-  <h4>Title</h4>
+  <p>Title</p>
   <%= f.text_field :title %>
 
-  <h4>Body</h4>
+  <p>Body</p>
   <%= f.text_area :body %>
 
   <%= f.submit 'Create Book' %>
 
 <% end %>
+
+</main>
